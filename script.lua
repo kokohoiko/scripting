@@ -161,6 +161,7 @@ while true do
 			game:GetService("ReplicatedStorage").Remotes.SellTokens:FireServer()
 			wait(1)
 			game:GetService("ReplicatedStorage").Remotes.Warp:FireServer("Home")
+			wait(3)
 		end
 	end
 wait(0.5)
