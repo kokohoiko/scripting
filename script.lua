@@ -137,7 +137,6 @@ desPrice.Position = UDim2.new(0, 309, 0, 130)
 desPrice.Size = UDim2.new(0, 75, 0, 15)
 desPrice.BackgroundTransparency = 1
 desPrice.Text = "enter a number"
-local DesiredPrice = desPrice.Text
 
 while true do
 	if autobuyIsPressed == true then
@@ -154,6 +153,7 @@ while true do
 		game:GetService("ReplicatedStorage").Remotes.SpendSkillPoints:FireServer("Money",1000000000)
 	end
 	if autosellIsPressed == true then
+		local DesiredPrice = tonumber(desPrice.Text)
 		print("autosell is pressed")
 		if CurrentPrice >= DesiredPrice then
 			game:GetService("ReplicatedStorage").Remotes.Warp:FireServer("Sell")
