@@ -181,6 +181,7 @@ while true do
 					local uX = v1:GetAttribute("TileX")
 					local uZ = v1:GetAttribute("TileZ")
 					game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("SellItem"):InvokeServer(uX, uZ)
+					game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("PlaceItem"):InvokeServer(value.Name, uX, uZ, 0)
 					print("sold item")
 				end
 			end
