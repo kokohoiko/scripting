@@ -153,6 +153,10 @@ while true do
 		game:GetService("ReplicatedStorage").Remotes.SpendSkillPoints:FireServer("Money",1000000000)
 	end
 	if autosellIsPressed == true then
+		local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+		local plotId = game.Players.LocalPlayer:GetAttribute("PlotId")
+		local plot = string.format("Plot%d",plotId)
+		local moneypad = game.workspace.Map.Generated.Plots[plot].CollectPad.Pad
 		local DesiredPrice = tonumber(desPrice.Text)
 		print("autosell is pressed")
 		if CurrentPrice >= DesiredPrice then
@@ -161,6 +165,8 @@ while true do
 			game:GetService("ReplicatedStorage").Remotes.SellTokens:FireServer()
 			wait(1)
 			game:GetService("ReplicatedStorage").Remotes.Warp:FireServer("Home")
+			wait(0.1)
+			rootPart.CFrame = moneypad.CFrame
 			wait(3)
 		end
 	end
