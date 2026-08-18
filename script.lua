@@ -165,9 +165,9 @@ while true do
 			game:GetService("ReplicatedStorage").Remotes.SellTokens:FireServer()
 			wait(1)
 			game:GetService("ReplicatedStorage").Remotes.Warp:FireServer("Home")
-			wait(0.1)
+			wait(1)
 			rootPart.CFrame = moneypad.CFrame
-			wait(3)
+			wait(2)
 		end
 	end
 wait(0.5)
