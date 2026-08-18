@@ -136,6 +136,7 @@ desPrice.Parent = ScreenGui
 desPrice.Position = UDim2.new(0, 309, 0, 130)
 desPrice.Size = UDim2.new(0, 75, 0, 15)
 desPrice.BackgroundTransparency = 1
+desPrice.Text = "enter a number"
 local DesiredPrice = desPrice.Text
 
 while true do
