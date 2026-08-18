@@ -138,6 +138,12 @@ desPrice.Size = UDim2.new(0, 75, 0, 15)
 desPrice.BackgroundTransparency = 1
 desPrice.Text = "enter a number"
 
+local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+local plotId = game.Players.LocalPlayer:GetAttribute("PlotId")
+local plot = string.format("Plot%d",plotId)
+local moneypad = game.workspace.Map.Generated.Plots[plot].CollectPad.Pad
+local DesiredPrice = tonumber(desPrice.Text)
+
 while true do
 	if autobuyIsPressed == true then
 		for index, value in pairs(ScrollingFrame4:GetChildren()) do
@@ -153,12 +159,8 @@ while true do
 		game:GetService("ReplicatedStorage").Remotes.SpendSkillPoints:FireServer("Money",1000000000)
 	end
 	if autosellIsPressed == true then
-		local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
-		local plotId = game.Players.LocalPlayer:GetAttribute("PlotId")
-		local plot = string.format("Plot%d",plotId)
-		local moneypad = game.workspace.Map.Generated.Plots[plot].CollectPad.Pad
-		local DesiredPrice = tonumber(desPrice.Text)
 		print("autosell is pressed")
+		rootPart.Anchored = true
 		if CurrentPrice >= DesiredPrice then
 			game:GetService("ReplicatedStorage").Remotes.Warp:FireServer("Sell")
 			wait(1)
@@ -169,6 +171,8 @@ while true do
 			rootPart.CFrame = moneypad.CFrame
 			wait(2)
 		end
+	else
+		rootPart.Anchored = false
 	end
 wait(0.5)
 end
