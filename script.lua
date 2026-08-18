@@ -150,9 +150,11 @@ while true do
 		print("autobuy IS pressed")
 	end
 	if autoupgIsPressed == true then
+		print("autoupgrade is pressed")
 		game:GetService("ReplicatedStorage").Remotes.SpendSkillPoints:FireServer("Money",1000000000)
 	end
 	if autosellIsPressed == true then
+		print("autosell is pressed")
 		if CurrentPrice >= DesiredPrice then
 			game:GetService("ReplicatedStorage").Remotes.Warp:FireServer("Sell")
 			wait(1)
