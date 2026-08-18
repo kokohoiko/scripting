@@ -1,3 +1,5 @@
+local CurrentPrice = workspace:GetAttribute("TokenPrice")
+
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "ScreenGui2"
 ScreenGui.ResetOnSpawn = false
@@ -128,6 +130,14 @@ Autosell.MouseButton1Click:Connect(function()
 	end
 end)
 
+local desPrice = Instance.new("Textbox")
+desPrice.Name = "DesiredPrice"
+desPrice.Parent = ScreenGui
+desPrice.Position = UDim2.new(0, 309, 0, 130)
+desPrice.Size = UDim2.new(0, 75, 0, 15)
+desPrice.BackgroundTransparency = 1
+local DesiredPrice = desPrice.Text
+
 while true do
 	if autobuyIsPressed == true then
 		for index, value in pairs(ScrollingFrame4:GetChildren()) do
@@ -137,6 +147,18 @@ while true do
 			end
 		end
 		print("autobuy IS pressed")
+	end
+	if autoupgIsPressed == true then
+		game:GetService("ReplicatedStorage").Remotes.SpendSkillPoints:FireServer("Money",1000000000)
+	end
+	if autosellIsPressed == true then
+		if CurrentPrice >= DesiredPrice then
+			game:GetService("ReplicatedStorage").Remotes.Warp:FireServer("Sell")
+			wait(1)
+			game:GetService("ReplicatedStorage").Remotes.SellTokens:FireServer()
+			wait(1)
+			game:GetService("ReplicatedStorage").Remotes.Warp:FireServer("Home")
+		end
 	end
 wait(0.5)
 end
