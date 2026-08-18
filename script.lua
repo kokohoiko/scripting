@@ -169,10 +169,10 @@ while true do
 			game:GetService("ReplicatedStorage").Remotes.Warp:FireServer("Home")
 			wait(1)
 			rootPart.CFrame = moneypad.CFrame
+			rootPart.Anchored = true
 			wait(2)
+			rootPart.Anchored = false
 		end
-	else
-		rootPart.Anchored = false
 	end
 wait(0.5)
 end
