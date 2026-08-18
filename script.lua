@@ -1,5 +1,3 @@
-local CurrentPrice = workspace:GetAttribute("TokenPrice")
-
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "ScreenGui2"
 ScreenGui.ResetOnSpawn = false
@@ -146,6 +144,7 @@ local moneypad = game.workspace.Map.Generated.Plots[plot].CollectPad.Pad
 
 while true do
 	local DesiredPrice = tonumber(desPrice.Text)
+	local CurrentPrice = workspace:GetAttribute("TokenPrice")
 	if autobuyIsPressed == true then
 		for index, value in pairs(ScrollingFrame4:GetChildren()) do
 			if value.BackgroundColor3 == Color3.fromRGB(30, 171, 27) then
