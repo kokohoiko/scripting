@@ -50,6 +50,7 @@ local hwareitems = {"Old Laptop", "Office PC", "Gaming PC", "Mining Rig", "GPU S
 for i, v in pairs(hwareitems) do
 	local text = Instance.new("TextButton")
 	local isOn = false
+	local toSell = false
 	text.Name = v
 	text.Size = UDim2.new(0, 175, 0, 25)
 	text.Position = UDim2.new(0.03,0,0.02*(i-0.9), 0)
@@ -63,6 +64,15 @@ for i, v in pairs(hwareitems) do
 		else
 			isOn = true
 			text.BackgroundColor3 = Color3.fromRGB(30, 171, 27)
+		end
+	end)
+	text.MouseButton2Click:Connect(function()
+		if toSell = true then
+			toSell = false
+			text.BackgroundColor3 = Color3.fromRGB(181, 18, 18)
+		else
+			toSell = true
+			text.BackgroundColor3 = Color3.fromRGB(38, 82, 224)
 		end
 	end)
 end
@@ -141,6 +151,7 @@ local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
 local plotId = game.Players.LocalPlayer:GetAttribute("PlotId")
 local plot = string.format("Plot%d",plotId)
 local moneypad = game.workspace.Map.Generated.Plots[plot].CollectPad.Pad
+itemsToSell = {}
 
 while true do
 	local DesiredPrice = tonumber(desPrice.Text)
@@ -150,9 +161,25 @@ while true do
 			if value.BackgroundColor3 == Color3.fromRGB(30, 171, 27) then
 				game:GetService("ReplicatedStorage").Remotes.BuyItem:InvokeServer("Hardware",value.Name)
 				print(value)
+			elseif value.BackgroundColor3 == Color3.fromRGB(38, 82, 224) and table.find(itemsToSell, value.Name) == false then
+				table.insert(itemsToSell, value.Name)
+			else
+				local removeFromList = table.find(itemsToSell, value.Name)
+				if removeFromList then
+					table.remove(itemsToSell, removeFromList)
+				end
 			end
 		end
 		print("autobuy IS pressed")
+		for i1, v1 in ipairs(game.workspace.Map.Generated.Plots[plot].Units:GetChildren()) do
+			for i2, v2 in ipairs(itemsToSell) do
+				if v1.Name == v2 then
+					local uX = v1:GetAttribute("TileX")
+					local uZ = v1:GetAttribute("TileZ")
+					game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("SellItem"):InvokeServer(uX, uZ)
+				end
+			end
+		end
 	end
 	if autoupgIsPressed == true then
 		print("autoupgrade is pressed")
