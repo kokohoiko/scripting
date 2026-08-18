@@ -163,9 +163,12 @@ while true do
 				print(value)
 			elseif value.BackgroundColor3 == Color3.fromRGB(38, 82, 224) and table.find(itemsToSell, value.Name) == false then
 				table.insert(itemsToSell, value.Name)
+				print("added an item to the list")
+				print(itemsToSell)
 			else
 				local removeFromList = table.find(itemsToSell, value.Name)
 				if removeFromList then
+					print("removed an item from the list")
 					table.remove(itemsToSell, removeFromList)
 				end
 			end
@@ -174,9 +177,11 @@ while true do
 		for i1, v1 in ipairs(game.workspace.Map.Generated.Plots[plot].Units:GetChildren()) do
 			for i2, v2 in ipairs(itemsToSell) do
 				if v1.Name == v2 then
+					print(v1)
 					local uX = v1:GetAttribute("TileX")
 					local uZ = v1:GetAttribute("TileZ")
 					game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("SellItem"):InvokeServer(uX, uZ)
+					print("sold item")
 				end
 			end
 		end
