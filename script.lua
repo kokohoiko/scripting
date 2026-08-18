@@ -161,7 +161,7 @@ while true do
 			if value.BackgroundColor3 == Color3.fromRGB(30, 171, 27) then
 				game:GetService("ReplicatedStorage").Remotes.BuyItem:InvokeServer("Hardware",value.Name)
 				print(value)
-			elseif value.BackgroundColor3 == Color3.fromRGB(38, 82, 224) and table.find(itemsToSell, value.Name) == false then
+			elseif value.BackgroundColor3 == Color3.fromRGB(38, 82, 224) then
 				table.insert(itemsToSell, value.Name)
 				print("added an item to the list")
 				print(itemsToSell)
