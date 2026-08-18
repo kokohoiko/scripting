@@ -160,7 +160,6 @@ while true do
 	end
 	if autosellIsPressed == true then
 		print("autosell is pressed")
-		rootPart.Anchored = true
 		if CurrentPrice >= DesiredPrice then
 			game:GetService("ReplicatedStorage").Remotes.Warp:FireServer("Sell")
 			wait(1)
