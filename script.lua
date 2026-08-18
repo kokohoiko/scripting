@@ -76,6 +76,58 @@ closeButton.MouseButton1Click:Connect(function()
 	closeButton.Parent.Parent:Destroy()
 end)
 
+local Autoupg = Instance.new("TextButton")
+local autoupgIsPressed = false
+Autoupg.Name = "Autoupgrade"
+Autoupg.Parent = ScreenGui
+Autoupg.ZIndex = 3
+Autoupg.Position = UDim2.new(0, 232, 0, 100)
+Autoupg.Size = UDim2.new(0, 75, 0, 25)
+Autoupg.BackgroundColor3 = Color3.fromRGB(181, 18, 18)
+Autoupg.BorderSizePixel = 0
+local AutoupgCorner = Instance.new("UICorner")
+AutoupgCorner.CornerRadius = UDim.new(0, 4)
+AutoupgCorner.Parent = Autoupg
+Autoupg.Text = "Autoupg"
+Autoupg.TextSize = 18
+Autoupg.TextColor3 = Color3.fromRGB(255, 255, 255)
+Autoupg.Font = Enum.Font.SourceSansBold
+Autoupg.MouseButton1Click:Connect(function()
+	if autoupgIsPressed == true then
+		autoupgIsPressed = false
+		Autoupg.BackgroundColor3 = Color3.fromRGB(181, 18, 18)
+	else
+		autoupgIsPressed = true
+		Autoupg.BackgroundColor3 = Color3.fromRGB(30, 171, 27)
+	end
+end)
+
+local Autosell = Instance.new("TextButton")
+local autosellIsPressed = false
+Autosell.Name = "Autosell"
+Autosell.Parent = ScreenGui
+Autosell.ZIndex = 4
+Autosell.Position = UDim2.new(0, 309, 0, 100)
+Autosell.Size = UDim2.new(0, 75, 0, 25)
+Autosell.BackgroundColor3 = Color3.fromRGB(181, 18, 18)
+Autosell.BorderSizePixel = 0
+local AutosellCorner = Instance.new("UICorner")
+AutosellCorner.CornerRadius = UDim.new(0, 4)
+AutosellCorner.Parent = Autosell
+Autosell.Text = "Autosell"
+Autosell.TextSize = 18
+Autosell.TextColor3 = Color3.fromRGB(255, 255, 255)
+Autosell.Font = Enum.Font.SourceSansBold
+Autosell.MouseButton1Click:Connect(function()
+	if autosellIsPressed == true then
+		autosellIsPressed = false
+		Autosell.BackgroundColor3 = Color3.fromRGB(181, 18, 18)
+	else
+		autosellIsPressed = true
+		Autosell.BackgroundColor3 = Color3.fromRGB(30, 171, 27)
+	end
+end)
+
 while true do
 	if autobuyIsPressed == true then
 		for index, value in pairs(ScrollingFrame4:GetChildren()) do
