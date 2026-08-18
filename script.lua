@@ -142,7 +142,6 @@ local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
 local plotId = game.Players.LocalPlayer:GetAttribute("PlotId")
 local plot = string.format("Plot%d",plotId)
 local moneypad = game.workspace.Map.Generated.Plots[plot].CollectPad.Pad
-local DesiredPrice = tonumber(desPrice.Text)
 
 while true do
 	if autobuyIsPressed == true then
@@ -160,6 +159,7 @@ while true do
 	end
 	if autosellIsPressed == true then
 		print("autosell is pressed")
+		local DesiredPrice = tonumber(desPrice.Text)
 		if CurrentPrice >= DesiredPrice then
 			game:GetService("ReplicatedStorage").Remotes.Warp:FireServer("Sell")
 			wait(1)
