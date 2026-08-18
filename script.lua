@@ -130,7 +130,7 @@ Autosell.MouseButton1Click:Connect(function()
 	end
 end)
 
-local desPrice = Instance.new("Textbox")
+local desPrice = Instance.new("TextBox")
 desPrice.Name = "DesiredPrice"
 desPrice.Parent = ScreenGui
 desPrice.Position = UDim2.new(0, 309, 0, 130)
