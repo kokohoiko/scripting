@@ -159,7 +159,10 @@ while true do
 	if autobuyIsPressed == true then
 		for index, value in pairs(ScrollingFrame4:GetChildren()) do
 			if value.BackgroundColor3 == Color3.fromRGB(30, 171, 27) then
+				local rX = math.random(31, 34)
+				local rZ = math.random(23, 26)
 				game:GetService("ReplicatedStorage").Remotes.BuyItem:InvokeServer("Hardware",value.Name)
+				game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("PlaceItem"):InvokeServer(value.Name, rX, rZ, 0)
 				print(value)
 			elseif value.BackgroundColor3 == Color3.fromRGB(38, 82, 224) then
 				table.insert(itemsToSell, value.Name)
@@ -181,7 +184,6 @@ while true do
 					local uX = v1:GetAttribute("TileX")
 					local uZ = v1:GetAttribute("TileZ")
 					game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("SellItem"):InvokeServer(uX, uZ)
-					game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("PlaceItem"):InvokeServer(value.Name, uX, uZ, 0)
 					print("sold item")
 				end
 			end
