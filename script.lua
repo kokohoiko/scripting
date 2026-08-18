@@ -151,7 +151,7 @@ local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
 local plotId = game.Players.LocalPlayer:GetAttribute("PlotId")
 local plot = string.format("Plot%d",plotId)
 local moneypad = game.workspace.Map.Generated.Plots[plot].CollectPad.Pad
-itemsToSell = {}
+local itemsToSell = {}
 
 while true do
 	local DesiredPrice = tonumber(desPrice.Text)
