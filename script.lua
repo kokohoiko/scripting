@@ -159,8 +159,8 @@ while true do
 	if autobuyIsPressed == true then
 		for index, value in pairs(ScrollingFrame4:GetChildren()) do
 			if value.BackgroundColor3 == Color3.fromRGB(30, 171, 27) then
-				local rX = math.random(31, 34)
-				local rZ = math.random(23, 26)
+				local rX = math.random(25, 40) -- max from 25 to 40
+				local rZ = math.random(23, 28) -- max from 23 to 34
 				game:GetService("ReplicatedStorage").Remotes.BuyItem:InvokeServer("Hardware",value.Name)
 				game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("PlaceItem"):InvokeServer(value.Name, rX, rZ, 0)
 				print(value)
