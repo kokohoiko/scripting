@@ -46,7 +46,7 @@ ScrollingFrame4.Size = UDim2.new(0, 200, 0, 200)
 ScrollingFrame4.BackgroundColor3 = Color3.fromRGB(51, 65, 85)
 ScrollingFrame4.BorderSizePixel = 0
 
-local hwareitems = {"Old Laptop", "Office PC", "Gaming PC", "Mining Rig", "GPU Server", "GPU Rack", "Server Tower", "TPU Pod", "Inference Rack", "Liquid Cluster"}
+local hwareitems = {"Old Laptop", "Office PC", "Gaming PC", "Mining Rig", "GPU Server", "GPU Rack", "Server Tower", "TPU Pod", "Inference Rack", "Liquid Cluster", "Tensor Spire", "Quantum Node", "AI Supercluster"}
 for i, v in pairs(hwareitems) do
 	local text = Instance.new("TextButton")
 	local isOn = false
