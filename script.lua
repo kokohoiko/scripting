@@ -67,7 +67,7 @@ for i, v in pairs(hwareitems) do
 		end
 	end)
 	text.MouseButton2Click:Connect(function()
-		if toSell = true then
+		if toSell == true then
 			toSell = false
 			text.BackgroundColor3 = Color3.fromRGB(181, 18, 18)
 		else
